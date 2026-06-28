@@ -1,0 +1,286 @@
+{
+  "info": {
+    "_postman_id": "efee9e88-ec29-4d60-943a-83cdae753f35",
+    "name": "student-management-system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "32759239"
+  },
+  "item": [
+    {
+      "name": "Auth API's",
+      "item": [
+        {
+          "name": "Admin Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"12345\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/api/auth/admin/login",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "auth",
+                "admin",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Student Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"studentCode\": \"STU1002\",\r\n    \"dateOfBirth\": \"2000-05-15\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/api/auth/student/login",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "auth",
+                "student",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Admin API's",
+      "item": [
+        {
+          "name": "Search Student By Name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/api/admin/student/search?name=gaurav",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "admin",
+                "student",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "gaurav"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Student",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth_secret_0ist}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"gaurav\",\r\n  \"dateOfBrith\": \"2000-05-15\",\r\n  \"gender\": \"male\",\r\n  \"studentCode\": \"STU1002\",\r\n  \"addresses\": [\r\n    {\r\n      \"addressType\": \"Permanent\",\r\n      \"street\": \"123 MG Road\",\r\n      \"city\": \"Bengaluru\",\r\n      \"state\": \"Karnataka\",\r\n      \"country\": \"India\",\r\n      \"pincode\": \"560037\"\r\n    },\r\n    {\r\n      \"addressType\": \"Current\",\r\n      \"street\": \"45 Whitefield Main Road\",\r\n      \"city\": \"Bengaluru\",\r\n      \"state\": \"Karnataka\",\r\n      \"country\": \"India\",\r\n      \"pincode\": \"560066\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/api/admin/student",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "admin",
+                "student"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Course",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"courseName\": \"Java Full Stack Development\",\r\n  \"description\": \"Comprehensive Java Full Stack course covering backend and frontend development.\",\r\n  \"courseType\": \"Online\",\r\n  \"duration\": \"6 Months\",\r\n  \"topics\": [\r\n    \"Core Java\",\r\n    \"OOP\",\r\n    \"Collections\",\r\n    \"Java 8\",\r\n    \"MySQL\",\r\n    \"Docker\",\r\n    \"JUnit\",\r\n    \"Mockito\",\r\n    \"Git\"\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/api/admin/course",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "admin",
+                "course"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetStudentByCourse",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/api/admin/student/by-course/1",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "admin",
+                "student",
+                "by-course",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "StudentCourseMapping",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"courseName\": \"Java Full Stack Development\",\r\n  \"description\": \"Comprehensive Java Full Stack course covering backend and frontend development.\",\r\n  \"courseType\": \"Online\",\r\n  \"duration\": \"6 Months\",\r\n  \"topics\": [\r\n    \"Core Java\",\r\n    \"OOP\",\r\n    \"Collections\",\r\n    \"Java 8\",\r\n    \"Multithreading\",\r\n    \"Spring Core\",\r\n    \"Spring Boot\",\r\n    \"Spring Data JPA\",\r\n    \"Hibernate\",\r\n    \"REST API\",\r\n    \"Spring Security\",\r\n    \"JWT\",\r\n    \"Microservices\",\r\n    \"Kafka\",\r\n    \"MySQL\",\r\n    \"Docker\",\r\n    \"JUnit\",\r\n    \"Mockito\",\r\n    \"Git\"\r\n  ]\r\n}"
+            },
+            "url": {
+              "raw": "localhost:8080/api/admin/student/2/course/1",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "admin",
+                "student",
+                "2",
+                "course",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Student API's",
+      "item": [
+        {
+          "name": "Update Student Profile",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{supabase_service_role_api_key_0mbx}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"gaurav.patrange@example.com\",\r\n  \"mobileNumber\": \"9876543210\",\r\n  \"parentsName\": \"Rajesh Patrange\",\r\n  \"addresses\": [\r\n    {\r\n      \"addressType\": \"HOME\",\r\n      \"street\": \"123 MG Road\",\r\n      \"city\": \"Bengaluru\",\r\n      \"state\": \"Karnataka\",\r\n      \"country\": \"India\",\r\n      \"zipCode\": \"560037\"\r\n    },\r\n    {\r\n      \"addressType\": \"PERMANENT\",\r\n      \"street\": \"45 Shivaji Nagar\",\r\n      \"city\": \"Nagpur\",\r\n      \"state\": \"Maharashtra\",\r\n      \"country\": \"India\",\r\n      \"zipCode\": \"440001\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/api/student/update",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "student",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "supabase_service_role_api_key_1dvb",
+      "secret": true
+    },
+    {
+      "key": "auth_secret_0gmw",
+      "secret": true
+    },
+    {
+      "key": "supabase_service_role_api_key_0mbx",
+      "secret": true
+    },
+    {
+      "key": "auth_secret_0ist",
+      "secret": true
+    }
+  ]
+}
